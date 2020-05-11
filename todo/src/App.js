@@ -3,10 +3,6 @@ import { reducer, initialState } from './reducers/todoReducer'
 import List from './Components/List'
 import './App.css';
 
-
-
-
-
 function App() {
 
   const [state, dispatch] = useReducer(reducer, initialState)

@@ -32,7 +32,7 @@ const List = props => {
                     <button>Add Todo</button>
                 </form>
             </div>
-            {props.todos.map(todo => <Item todo={todo} key={todo.id} /> )}
+            {props.todos.map(todo => <Item todo={todo} key={todo.id} dispatch={props.dispatch}/> )}
         </main>
     )
 }
