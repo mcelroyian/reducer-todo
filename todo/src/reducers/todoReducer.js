@@ -1,19 +1,28 @@
 export const reducer = (state, action) => {
+
+    const toggledTodos = newValue => {
+        const newTodos = state.todos.map( item => {
+            if (item.id === action.payload) {
+                item.completed = newValue;
+                return item
+            } else return item
+        })
+        return newTodos
+    }
+
     switch(action.type)  {
     case "TYPE_TODO":
         return { ...state, newTask: action.payload}
       case "ADD_TODO":
         return { ...state, newTask: '', todos: [...state.todos, action.payload] }
-      case "TOGGLE_COMPLETE":
-          const newTodos = state.todos.map(item => {
-              if (item.id === action.payload) {
-                  debugger
-                  item.completed = !item.completed
-                  return item
-              } else return item
-          })
-          debugger
-        return { ...state, todos: newTodos, }
+      case "COMPLETE_TODO":
+          console.log('entering complete todo')
+
+        return { ...state, todos: toggledTodos(true), }
+        case "ACTIVATE_TODO":
+          console.log('entering activate todo')
+
+        return { ...state, todos: toggledTodos(false), }
       default:
         return state
     }
